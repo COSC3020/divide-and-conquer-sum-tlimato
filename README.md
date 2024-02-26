@@ -26,3 +26,28 @@ and solve it as we did in the lectures. Give the final $\Theta$ complexity.
 
 Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. Add your answer to this markdown file.
+
+## Solution
+We can outline the complexity of the above using the following To analyze the runtime of the algorithm implemented above, let's consider the recurrence relation:
+
+T(n) = 3T(n/3) + 1
+
+where 1 is some constant time to combine the results. This can then be broken down into the following steps:
+
+T(n)​ = 3 * T(n/3) + 1
+       = 3[3 * T(n/9) + 1] + 1
+       = 3^2 * T(n/9) + 3 * 1 + 1
+       = 3^2 * [3 * T(n/27) + 1] + 3 * 1 + 1
+       = 3^3 * (T(n/27)) + 3^2 * 1 + 3 * 1 + 1
+
+This gives the general pattern:
+
+       = 3^k * T(n/3^k) + [summation (from i = 0 to k-1) of 3^i * 1]
+
+Works till n/(3^k) = 1 implying k = log_3(n). Substituting in T(n) = 3^(log_3(n)) * T(1) + [summation (from i = 0 to log_3(n-1)) of 1]. Given each term in the sum is constant, the summation simplifies to O(log n).
+
+Combining this term with the original T(n):
+
+T(n) = n + O(log n)
+
+which gives a tight constraint of Θ(n). This is because the big O is a lower order term. Overall, the algorithm is linear with input n.
