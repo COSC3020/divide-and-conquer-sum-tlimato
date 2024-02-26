@@ -40,7 +40,7 @@ T(n)​ = 3 * T(n/3) + 1
        = 3^2 * [3 * T(n/27) + 1] + 3 * 1 + 1
        = 3^3 * (T(n/27)) + 3^2 * 1 + 3 * 1 + 1
 
-This gives the General Pattern:
+This gives the general pattern:
 
        = 3^k * T(n/3^k) + [summation (from i = 0 to k-1) of 3^i * 1]
 
